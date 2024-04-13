@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bntdwunfolbcj"]
+[gd_scene load_steps=4 format=3 uid="uid://bntdwunfolbcj"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2c5cd"]
-[ext_resource type="Texture2D" uid="uid://d4dektsb7rlo7" path="res://assets/player_down.png" id="2_e8nee"]
+[ext_resource type="Texture2D" uid="uid://ce6v5wn8ljbf8" path="res://assets/player_sprites.png" id="2_vjmbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnqxb"]
+atlas = ExtResource("2_vjmbl")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_2c5cd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_e8nee")
+texture = SubResource("AtlasTexture_bnqxb")
 centered = false

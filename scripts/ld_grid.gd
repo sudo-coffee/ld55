@@ -4,7 +4,6 @@ class_name LDGrid extends Node2D
 @export var cell_size: Vector2i
 
 var _units: Array[LDUnit]
-var _tools: Array[LDTool]
 
 
 func add_unit(unit: LDUnit, pos: Vector2i) -> void:
@@ -13,14 +12,10 @@ func add_unit(unit: LDUnit, pos: Vector2i) -> void:
     unit.grid_position = pos
     add_child(unit)
     _units.append(unit)
-    if unit is LDTool:
-        _tools.append(unit)
 
 
 func remove_unit(unit: LDUnit):
     _units.remove_at(_units.find(unit))
-    if unit is LDTool:
-        _tools.remove_at(_units.find(unit))
 
 
 func cell_in_wall(pos: Vector2i) -> bool:
@@ -31,8 +26,3 @@ func cell_in_wall(pos: Vector2i) -> bool:
 
 func get_units_in_cell(pos: Vector2i) -> Array[LDUnit]:
     return _units.filter(func(unit): return unit.grid_position == pos)
-
-
-func get_tools_in_cell(pos: Vector2i) -> Array[LDTool]:
-    print(_tools)
-    return _tools.filter(func(tool): return tool.grid_position == pos)

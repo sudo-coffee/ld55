@@ -1,5 +1,8 @@
 class_name LDUnit extends Node2D
 
+@export var layer: int = 0
+@export var can_be_held: bool = false
+@onready var original_level: int = LDState.level
 var grid: LDGrid
 var is_moving: bool = false
 var grid_position: Vector2i:
@@ -9,12 +12,12 @@ var grid_position: Vector2i:
 var _grid_position: Vector2i
 
 
-func move(direction: Vector2i, time: float) -> void:
+func move(direction: Vector2i, move_time: float) -> void:
     is_moving = true
     position = Vector2(grid_position * grid.cell_size)
     _grid_position += direction
     var tween := get_tree().create_tween()
-    tween.tween_property(self, "position", Vector2(grid_position * grid.cell_size), time)
+    tween.tween_property(self, "position", Vector2(grid_position * grid.cell_size), move_time)
     tween.tween_property(self, "is_moving", false, 0)
 
 
