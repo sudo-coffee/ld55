@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3803ow6jfl25"]
+
+[ext_resource type="Script" path="res://scripts/ld_tool.gd" id="1_qeg78"]
+
+[sub_resource type="Gradient" id="Gradient_84cqc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_32mxb"]
+gradient = SubResource("Gradient_84cqc")
+width = 16
+height = 16
+
+[node name="ToolPotA" type="Node2D"]
+script = ExtResource("1_qeg78")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_32mxb")
+centered = false
