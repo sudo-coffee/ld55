@@ -1,9 +1,15 @@
 extends LDUnit
 
+@onready var _sprite: Sprite2D = $Sprite2D
 var _move_speed: float = 0.1
 var _direction := Vector2i(0, 1)
 var _buffer_direction := Vector2i(0, 0)
 var _held_tool: LDTool
+var _player_up_texture: Resource = preload("res://assets/player_up.png")
+var _player_down_texture: Resource = preload("res://assets/player_down.png")
+var _player_left_texture: Resource = preload("res://assets/player_left.png")
+var _player_right_texture: Resource = preload("res://assets/player_right.png")
+
 
 func _process(_delta):
     _process_movement()
@@ -32,6 +38,16 @@ func _process_movement() -> void:
         new_direction += Vector2i(-1, 0)
     if Input.is_action_pressed("move_right"):
         new_direction += Vector2i(1, 0)
+    
+    # Set player sprites.
+    if not _held_tool and new_direction == Vector2i(0, -1):
+        _sprite.texture = _player_up_texture
+    if not _held_tool and new_direction == Vector2i(0, 1):
+        _sprite.texture = _player_down_texture
+    if not _held_tool and new_direction == Vector2i(-1, 0):
+        _sprite.texture = _player_left_texture
+    if not _held_tool and new_direction == Vector2i(1, 0):
+        _sprite.texture = _player_right_texture
     
     # If moving vertically, prefer moving vertically.
     if _direction.x == 0 and new_direction.x != 0 and new_direction.y != 0:
@@ -62,13 +78,15 @@ func _move_player(direction: Vector2i) -> void:
     # Do not move into wall.
     if grid.cell_in_wall(grid_position + _direction):
         return
-    
-    # Do not move into unit if not holding that unit.
-    if units_in_direction.filter(func(unit): return unit != _held_tool).size() > 0:
+    if _held_tool and grid.cell_in_wall(_held_tool.grid_position + _direction):
         return
-
-    if not _held_tool:
-        pass # change sprite here
+    
+    # Do not move into other units.
+    if grid.get_units_in_cell(grid_position + _direction).filter(func(unit): return unit != _held_tool).size() > 0:
+        return
+    if _held_tool and grid.get_units_in_cell(_held_tool.grid_position + _direction).filter(func(unit): return unit != self).size() > 0:
+        return
+    
     _buffer_direction = Vector2i(0, 0)
     move(_direction, _move_speed)
     if _held_tool:
