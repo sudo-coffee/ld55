@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ca5nml4pql0v1"]
+
+[ext_resource type="FontFile" uid="uid://cab81h77vwmte" path="res://addons/fonts/Golden Air/PC/Golden Air.ttf" id="1_b8jbn"]
+
+[resource]
+default_base_scale = 1.0
+default_font = ExtResource("1_b8jbn")
+default_font_size = 8
+BoxContainer/constants/separation = 0
+Label/constants/line_spacing = 1

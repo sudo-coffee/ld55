@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://wq1ol16va6h7"
+path="res://.godot/imported/Golden Air.fnt-dc59e35afac2140a04399bc85e3e1a38.fontdata"
+
+[deps]
+
+source_file="res://addons/fonts/Golden Air/Atari8/Golden Air.fnt"
+dest_files=["res://.godot/imported/Golden Air.fnt-dc59e35afac2140a04399bc85e3e1a38.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

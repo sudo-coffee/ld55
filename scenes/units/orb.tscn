@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2h4lefcma8ye"]
+
+[ext_resource type="Script" path="res://scenes/units/orb.gd" id="1_b873g"]
+[ext_resource type="Texture2D" uid="uid://bmdbkhcdalfbe" path="res://assets/orb_sprites.png" id="2_k5elt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usxv4"]
+atlas = ExtResource("2_k5elt")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Orb" type="Node2D"]
+script = ExtResource("1_b873g")
+multiplier = 1.5
+can_be_held = true
+unit_layer = 1
+unit_type = &"orb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_usxv4")
+centered = false

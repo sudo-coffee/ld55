@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca64vm5fltkl4"]
+
+[ext_resource type="Script" path="res://scenes/units/bloom.gd" id="1_rqsx0"]
+[ext_resource type="Texture2D" uid="uid://c6h84v0nj4k85" path="res://assets/bloom_sprites.png" id="2_vk3s4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4tt8"]
+resource_local_to_scene = true
+atlas = ExtResource("2_vk3s4")
+region = Rect2(0, 0, 16, 32)
+
+[node name="Bloom" type="Node2D"]
+script = ExtResource("1_rqsx0")
+growth_interval = 4.0
+spout_multiplier = 1.5
+can_be_held = true
+unit_layer = 2
+unit_type = &"bloom"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_y4tt8")
+centered = false
+offset = Vector2(0, -16)

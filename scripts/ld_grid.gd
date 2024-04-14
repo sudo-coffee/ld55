@@ -3,19 +3,23 @@ class_name LDGrid extends Node2D
 @export var grid_size: Vector2i
 @export var cell_size: Vector2i
 
-var _units: Array[LDUnit]
+var units: Array[LDUnit]
 
 
-func add_unit(unit: LDUnit, pos: Vector2i) -> void:
-    await ready
+func add_unit(unit: LDUnit, instance: int, pos: Vector2i) -> void:
+    if not is_node_ready():
+        await ready
     unit.grid = self
+    unit.instance = instance
     unit.grid_position = pos
     add_child(unit)
-    _units.append(unit)
+    units.append(unit)
 
 
 func remove_unit(unit: LDUnit):
-    _units.remove_at(_units.find(unit))
+    units.remove_at(units.find(unit))
+    remove_child(unit)
+    
 
 
 func cell_in_wall(pos: Vector2i) -> bool:
@@ -25,4 +29,4 @@ func cell_in_wall(pos: Vector2i) -> bool:
 
 
 func get_units_in_cell(pos: Vector2i) -> Array[LDUnit]:
-    return _units.filter(func(unit): return unit.grid_position == pos)
+    return units.filter(func(unit): return unit.grid_position == pos)

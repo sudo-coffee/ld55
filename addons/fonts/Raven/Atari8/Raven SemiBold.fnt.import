@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://c7cxudlber836"
+path="res://.godot/imported/Raven SemiBold.fnt-2b627a1d0e3be92c07845c2686dfb2f5.fontdata"
+
+[deps]
+
+source_file="res://addons/fonts/Raven/Atari8/Raven SemiBold.fnt"
+dest_files=["res://.godot/imported/Raven SemiBold.fnt-2b627a1d0e3be92c07845c2686dfb2f5.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

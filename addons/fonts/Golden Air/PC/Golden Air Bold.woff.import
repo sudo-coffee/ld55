@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://ch58mdp3uaxlg"
+path="res://.godot/imported/Golden Air Bold.woff-01857b57a7a70a24fd999a6a33f65712.fontdata"
+
+[deps]
+
+source_file="res://addons/fonts/Golden Air/PC/Golden Air Bold.woff"
+dest_files=["res://.godot/imported/Golden Air Bold.woff-01857b57a7a70a24fd999a6a33f65712.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwe5ix2urvww0"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_p6440"]
+[ext_resource type="PackedScene" uid="uid://cq5uncw271cgg" path="res://scenes/board.tscn" id="1_sg7sk"]
+[ext_resource type="Texture2D" uid="uid://ph81u7of2qdt" path="res://assets/border_tiles.png" id="3_5bfuv"]
+[ext_resource type="Theme" uid="uid://ca5nml4pql0v1" path="res://assets/theme.tres" id="4_seflc"]
+[ext_resource type="Script" path="res://scenes/header.gd" id="5_jy8eg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05a4u"]
+texture = ExtResource("3_5bfuv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_so0kj"]
+sources/0 = SubResource("TileSetAtlasSource_05a4u")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_p6440")
+
+[node name="Board" parent="." instance=ExtResource("1_sg7sk")]
+position = Vector2(16, 16)
+
+[node name="Borders" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_so0kj")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 65536, 0, 458752, 0, 1, 393216, 0, 1, 327680, 0, 1, 262144, 0, 1, 196608, 0, 1, 131072, 0, 1, 65536, 0, 1, 524298, 131072, 1, 458762, 131072, 1, 393226, 131072, 1, 327690, 131072, 1, 196618, 131072, 1, 131082, 131072, 1, 65546, 131072, 1, 262154, 131072, 1, 10, 131072, 0, 9, 65536, 0, 8, 65536, 0, 589834, 131072, 1, 655370, 131072, 2, 655369, 65536, 2, 655368, 65536, 2, 655367, 65536, 2, 655366, 65536, 2, 655365, 65536, 2, 655364, 65536, 2, 655363, 65536, 2, 655362, 65536, 2, 655361, 65536, 2, 524288, 0, 1, 589824, 0, 1, 655360, 0, 2)
+
+[node name="Interface" type="VBoxContainer" parent="."]
+clip_contents = true
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 304.0
+offset_bottom = 224.0
+theme = ExtResource("4_seflc")
+
+[node name="Header" type="HBoxContainer" parent="Interface"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+script = ExtResource("5_jy8eg")
+
+[node name="Clock" type="Label" parent="Interface/Header"]
+clip_contents = true
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 2
+text = "test
+test"
+autowrap_mode = 3
+clip_text = true
+
+[node name="Mana" type="Label" parent="Interface/Header"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+autowrap_mode = 3
+clip_text = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Interface"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Interface"]
+layout_mode = 2
+text = "TEST"
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface"]
+layout_mode = 2

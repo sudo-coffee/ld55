@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuyyqpnse1gwv"]
+
+[ext_resource type="Script" path="res://scenes/units/spout.gd" id="1_f4uvj"]
+[ext_resource type="Texture2D" uid="uid://761ci6lru6v4" path="res://assets/spout.png" id="2_yas8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b5m3"]
+atlas = ExtResource("2_yas8c")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Spout" type="Node2D"]
+script = ExtResource("1_f4uvj")
+can_be_held = true
+unit_layer = 1
+unit_type = &"spout"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6b5m3")
+centered = false
