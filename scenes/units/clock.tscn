@@ -1,19 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqsik0rw5v2nb"]
 
 [ext_resource type="Script" path="res://scenes/units/clock.gd" id="1_ivlou"]
-[ext_resource type="Texture2D" uid="uid://dkq188t1mfin3" path="res://assets/clock_sprites.png" id="2_3lfoe"]
+[ext_resource type="Texture2D" uid="uid://dgd705hi51bgx" path="res://assets_2/clock_sprites.png" id="2_uf76j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqk0l"]
-atlas = ExtResource("2_3lfoe")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_olq1g"]
+resource_local_to_scene = true
+atlas = ExtResource("2_uf76j")
+region = Rect2(0, 0, 16, 32)
 
-[node name="Clock" type="Node2D"]
+[node name="Clock" type="Node2D" node_paths=PackedStringArray("atlas_sprite")]
 script = ExtResource("1_ivlou")
 multiplier = 1.5
 can_be_held = true
 unit_layer = 1
 unit_type = &"clock"
+atlas_sprite = NodePath("Sprite2D")
+UIName = "Clock"
+UIHelp = "Slows the flow of time."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_vqk0l")
+texture = SubResource("AtlasTexture_olq1g")
 centered = false
+offset = Vector2(0, -16)

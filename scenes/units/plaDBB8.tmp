@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bntdwunfolbcj"]
+
+[ext_resource type="Script" path="res://scenes/units/player.gd" id="1_dyh4c"]
+[ext_resource type="Texture2D" uid="uid://c5t3d3q5cmcas" path="res://assets_2/player_sprites.png" id="2_xkdlo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnqxb"]
+atlas = ExtResource("2_xkdlo")
+region = Rect2(16, 0, 16, 32)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_dyh4c")
+_move_time = 0.12
+_animation_time = 1.6
+unit_layer = -1
+unit_type = &"player"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bnqxb")
+centered = false
+offset = Vector2(0, -16)

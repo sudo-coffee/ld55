@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwe5ix2urvww0"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_p6440"]
+[ext_resource type="PackedScene" uid="uid://dxbsfc1rlbf43" path="res://scenes/world.tscn" id="2_j2m2r"]
+[ext_resource type="Script" path="res://scenes/interface.gd" id="4_s2xh6"]
+[ext_resource type="Theme" uid="uid://ca5nml4pql0v1" path="res://assets/theme.tres" id="4_seflc"]
+[ext_resource type="Script" path="res://scenes/header.gd" id="5_jy8eg"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_p6440")
+seconds_per_hour = 1.0
+
+[node name="World" parent="." instance=ExtResource("2_j2m2r")]
+
+[node name="Interface" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(128, 208)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 224.0
+script = ExtResource("4_s2xh6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+theme = ExtResource("4_seflc")
+
+[node name="Header" type="HBoxContainer" parent="Interface/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(128, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("5_jy8eg")
+
+[node name="Clock" type="Label" parent="Interface/VBoxContainer/Header"]
+clip_contents = true
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 2
+autowrap_mode = 3
+clip_text = true
+
+[node name="Mana" type="Label" parent="Interface/VBoxContainer/Header"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+autowrap_mode = 3
+clip_text = true
+
+[node name="Floor" type="Label" parent="Interface/VBoxContainer/Header"]
+clip_contents = true
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+autowrap_mode = 3
+clip_text = true

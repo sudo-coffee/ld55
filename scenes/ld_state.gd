@@ -11,6 +11,10 @@ var floor: int = 0
 var summon_queue: Array[_SummonQueueItem] = []
 var time_multiplier = 1.0
 var drain_multiplier = 1.0
+var seed_skips: Array[int]
+var interface: Control
+var game_started: bool = false
+var first_menu: bool = true
 
 class _SummonQueueItem:
     var unit_type: String

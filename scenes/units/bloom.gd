@@ -15,14 +15,20 @@ func _process(_delta):
     if growth >= 1.0 and stage < 4:
         growth = 0.0
         stage += 1
-        $Sprite2D.texture.region.position.y = stage * 32
+        update_sprite()
+
+
+func update_sprite():
+    $Sprite2D.texture.region.position.y = stage * 32
 
 
 func on_release():
+    super()
     reset_growth_multiplier()
 
 
 func on_hold():
+    super()
     growth_multiplier = 0.0
     if stage == 4:
         LDState.mana += mana_gain

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://him6n333m5yw"]
+
+[ext_resource type="Texture2D" uid="uid://btuvjc3lo5jk7" path="res://assets_2/pop.png" id="1_3a1nh"]
+
+[node name="Pop" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2000
+texture = ExtResource("1_3a1nh")
+centered = false

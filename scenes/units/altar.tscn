@@ -1,21 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0avkq3ahr0om"]
+[gd_scene load_steps=3 format=3 uid="uid://d0avkq3ahr0om"]
 
 [ext_resource type="Script" path="res://scripts/ld_unit.gd" id="1_y8fnv"]
+[ext_resource type="Texture2D" uid="uid://3384d54f6ipu" path="res://assets_2/altar_sprites.png" id="2_0if6o"]
 
-[sub_resource type="Gradient" id="Gradient_fnhmt"]
-colors = PackedColorArray(0, 0, 0, 0, 0.43, 0.9715, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6ufmh"]
-gradient = SubResource("Gradient_fnhmt")
-width = 16
-height = 16
-fill = 2
-fill_from = Vector2(0.478261, 0.491304)
-
-[node name="Altar" type="Node2D"]
+[node name="Altar" type="Node2D" node_paths=PackedStringArray("atlas_sprite")]
 script = ExtResource("1_y8fnv")
+can_be_held = true
 unit_type = &"altar"
+atlas_sprite = NodePath("Sprite2D")
+UIName = "Altar"
+UIHelp = "Drop an item here, then use the [Stand] to summon a copy from the next floor."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_6ufmh")
+texture = ExtResource("2_0if6o")
 centered = false
+offset = Vector2(0, -16)

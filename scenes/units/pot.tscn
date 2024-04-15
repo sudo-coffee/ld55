@@ -1,18 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3803ow6jfl25"]
 
 [ext_resource type="Script" path="res://scenes/units/pot.gd" id="1_uj3xa"]
-[ext_resource type="Texture2D" uid="uid://cvjh6dnscffb3" path="res://assets/pot_sprites.png" id="2_2ck3m"]
+[ext_resource type="Texture2D" uid="uid://d7qwi1l4sa0b" path="res://assets_2/pot_sprites.png" id="2_d4o1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fadfr"]
-atlas = ExtResource("2_2ck3m")
-region = Rect2(0, 0, 16, 16)
+resource_local_to_scene = true
+atlas = ExtResource("2_d4o1a")
+region = Rect2(0, 0, 16, 32)
 
-[node name="Pot" type="Node2D"]
+[node name="Pot" type="Node2D" node_paths=PackedStringArray("atlas_sprite")]
 script = ExtResource("1_uj3xa")
 can_be_held = true
 unit_layer = 1
 unit_type = &"pot"
+atlas_sprite = NodePath("Sprite2D")
+UIName = "Pot"
+UIHelp = "Place a [Bloom] seed here to let it grow."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_fadfr")
 centered = false
+offset = Vector2(0, -16)

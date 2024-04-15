@@ -7,7 +7,7 @@ extends HBoxContainer
 
 func _process(_delta):
     clock.text = "Time\n" \
-        + "%02d" % (int(floor(LDState.time + 5)) % 12 + 1) \
+        + "%02d" % (int(floor(LDState.time + 6))) \
         + ":" \
         + "%02d" % floor(fmod(LDState.time, 1.0) * 60)
     mana.text = "Mana\n" + "%03d" % floor(LDState.mana)

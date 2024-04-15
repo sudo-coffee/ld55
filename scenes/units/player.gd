@@ -1,6 +1,7 @@
 extends LDUnit
 
 @export var _move_time: float = 0.1
+@export var _animation_time: float = 1.0
 @onready var _sprite: Sprite2D = $Sprite2D
 var _direction := Vector2i(0, 1)
 var _sprite_direction := Vector2i(0, 1)
@@ -11,6 +12,23 @@ var held_unit: LDUnit:
     get: return _held_unit
 
 signal looking_at(units: LDUnit)
+
+
+func _init():
+    _start_animation()
+
+
+func _start_animation():
+    if not is_node_ready():
+        await ready
+    var animation_tween := get_tree().create_tween()
+    animation_tween.set_loops()
+    animation_tween.tween_interval(_animation_time)
+    animation_tween.tween_callback(_update_animation)
+
+
+func _update_animation():
+    _sprite.texture.region.position.y = int(_sprite.texture.region.position.y + 32) % 128
 
 
 func _process(_delta):
@@ -42,7 +60,16 @@ func _process_action(unit: LDUnit) -> void:
             new_unit.on_create()
             altar_units[0].was_copied = true
             _held_unit = new_unit
-            LDState.add_summon("pot", altar_units[0].instance)
+            _held_unit.on_hold()
+            LDState.add_summon(altar_units[0].unit_type, altar_units[0].instance)
+            if new_unit.unit_type == &"bloom":
+                new_unit.stage = altar_units[0].stage
+                new_unit.growth = altar_units[0].growth
+                new_unit.update_sprite()
+        elif unit.can_be_held:
+            _held_unit = unit
+            _held_unit.is_held = true
+            _held_unit.on_hold()
     
     # Grab unit.
     elif unit.can_be_held:
@@ -97,6 +124,9 @@ func _process_movement() -> void:
     # store the new direction for later.
     elif is_moving and new_direction != Vector2i(0, 0) and new_direction != _direction:
         _buffer_direction = new_direction
+    
+    # Update info boxes.
+    LDState.interface.update_info_boxes(grid.get_units_in_cell(grid_position + _sprite_direction))
 
 
 func _move_player(direction: Vector2i) -> void:
@@ -121,3 +151,4 @@ func _move_player(direction: Vector2i) -> void:
     move(_direction, _move_time)
     if _held_unit:
         _held_unit.move(_direction, _move_time)
+    

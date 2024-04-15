@@ -4,8 +4,10 @@ extends LDUnit
 
 
 func on_create():
+    super()
     LDState.time_multiplier *= 1.0 / multiplier
 
 
 func on_delete():
+    super()
     LDState.time_multiplier *= multiplier

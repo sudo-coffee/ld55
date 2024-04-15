@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb4jlfy4bbry3"]
+
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_712eg"]
+[ext_resource type="Theme" uid="uid://ca5nml4pql0v1" path="res://assets/theme.tres" id="2_hcl5y"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_712eg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
+theme = ExtResource("2_hcl5y")
+
+[node name="Label" type="Label" parent="Control"]
+offset_right = 200.0
+offset_bottom = 63.0
+text = "Summoner's Dilemma
+__________________
+
+
+Controls: Use the
+[Arrow Keys] to
+move and [Space]
+to interact.
+
+
+Each day ends
+at 18:00 on the
+clock.
+
+
+Press [Space]
+to start."
+autowrap_mode = 3
